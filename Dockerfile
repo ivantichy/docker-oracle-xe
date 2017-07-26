@@ -50,8 +50,8 @@ ENV PATH=$ORACLE_HOME/bin:$PATH
 # -------------
 COPY $INSTALL_FILE_1 $CONFIG_RSP $RUN_FILE $PWD_FILE $INSTALL_DIR/
 
-RUN ls
-RUN md5sum *.zip
+RUN cd $INSTALL_DIR && ls
+RUN cd $INSTALL_DIR && md5sum *.zip
 
 # Install Oracle Express Edition
 # ------------------------------
