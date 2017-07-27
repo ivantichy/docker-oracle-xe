@@ -50,8 +50,14 @@ ENV PATH=$ORACLE_HOME/bin:$PATH
 # -------------
 COPY $INSTALL_FILE_1 $CONFIG_RSP $RUN_FILE $PWD_FILE $INSTALL_DIR/
 
-RUN cd $INSTALL_DIR && ls
+RUN cd $INSTALL_DIR && ls -l
 RUN cd $INSTALL_DIR && md5sum *.zip
+RUN cd $INSTALL_DIR && rm *.zip && wget https://github.com/ivantichy/docker-oracle-xe/raw/master/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+RUN cd $INSTALL_DIR && ls -l
+RUN cd $INSTALL_DIR && md5sum *.zip
+
+
+
 
 # Install Oracle Express Edition
 # ------------------------------
