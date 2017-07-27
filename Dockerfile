@@ -65,23 +65,5 @@ RUN cd $INSTALL_DIR && md5sum *.zip
 # ------------------------------
 
 RUN yum -y install unzip libaio bc initscripts net-tools openssl && \
-    yum clean all && \
-    cd $INSTALL_DIR && \
-    unzip $INSTALL_FILE_1 && \
-    rm $INSTALL_FILE_1 &&    \
-    rpm -i Disk1/*.rpm &&    \
-    mkdir $ORACLE_BASE/oradata && \
-    chown -R oracle:dba $ORACLE_BASE && \
-    mv $INSTALL_DIR/$CONFIG_RSP $ORACLE_BASE/ && \
-    mv $INSTALL_DIR/$RUN_FILE $ORACLE_BASE/ && \
-    mv $INSTALL_DIR/$PWD_FILE $ORACLE_BASE/ && \
-    ln -s $ORACLE_BASE/$PWD_FILE / && \
-    cd $HOME && \
-    rm -rf $INSTALL_DIR && \
-    chmod u+x $ORACLE_BASE/$RUN_FILE && \
-    chmod u+x $ORACLE_BASE/$PWD_FILE
-
-VOLUME ["$ORACLE_BASE/oradata"]
-EXPOSE 1521 8080
-
-CMD exec $ORACLE_BASE/$RUN_FILE
+    yum clean all 
+    
